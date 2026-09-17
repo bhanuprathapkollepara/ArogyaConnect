@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password, check_password
 from .models import User
+from django.urls import HttpResponse
 
 
 # =========================================================
@@ -40,7 +41,7 @@ def signup(request):
 
             return render(
                 request,
-                "accounts/signup.html",
+                "account/signup.html",
                 {
                     "error": "Email already exists"
                 }
@@ -164,6 +165,13 @@ def signup(request):
 # LOGIN
 # =========================================================
 
+from django.shortcuts import render, redirect
+from django.contrib.auth.hashers import check_password
+from django.db.models import Q
+
+from .models import User
+
+
 def login(request):
 
     # Handle GET request
@@ -171,22 +179,28 @@ def login(request):
     if request.method == "GET":
         return render(
             request,
-            "accounts/login.html"
+            "account/login.html"
         )
 
     # Handle POST request
     # Process login form
     if request.method == "POST":
 
-        # Get username and password from frontend
-        username = request.POST.get("username")
+        # Get login input and password from frontend
+        # The user can enter username, mobile number, or email
+        login_input = request.POST.get("login_input")
         password = request.POST.get("password")
 
         try:
 
-            # Find the user using username
+            # Find the user using:
+            # 1. Username
+            # 2. Mobile number
+            # 3. Email address
             user = User.objects.get(
-                username=username
+                Q(username=login_input) |
+                Q(mobile_number=login_input) |
+                Q(email=login_input)
             )
 
             # Compare the entered password with
@@ -202,35 +216,50 @@ def login(request):
                 # Store username in session
                 request.session["username"] = user.username
 
-                # Redirect to dashboard
+                # Redirect the user to dashboard
                 return redirect("dashboard")
 
             # Password does not match
             return render(
                 request,
-                "accounts/login.html",
+                "account/login.html",
                 {
-                    "error": "Invalid password"
+                    "error": "Invalid password",
+                    "login_input": login_input
                 }
             )
 
-        # Username does not exist
+        # Username, mobile number, or email does not exist
         except User.DoesNotExist:
 
             return render(
                 request,
-                "accounts/login.html",
+                "account/login.html",
                 {
-                    "error": "Username does not exist"
+                    "error": "Username, mobile number, or email does not exist",
+                    "login_input": login_input
                 }
             )
 
+        # This can happen if multiple records match
+        except User.MultipleObjectsReturned:
+
+            return render(
+                request,
+                "account/login.html",
+                {
+                    "error": "Multiple accounts found. Please contact support.",
+                    "login_input": login_input
+                }
+            )
 
 # =========================================================
 # DASHBOARD
 # =========================================================
 
 def dashboard(request):
+    if request.method == "GET":
+        return HttpResponse("Hello")
 
     # Get logged-in user's ID from session
     user_id = request.session.get("user_id")
