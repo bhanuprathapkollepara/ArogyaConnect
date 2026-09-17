@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password, check_password
+from django.db.models import Q
 from .models import User
-from django.urls import HttpResponse
 
 
 # =========================================================
@@ -57,7 +57,7 @@ def signup(request):
 
             return render(
                 request,
-                "accounts/signup.html",
+                "account/signup.html",
                 {
                     "error": "Mobile number already exists"
                 }
@@ -165,13 +165,6 @@ def signup(request):
 # LOGIN
 # =========================================================
 
-from django.shortcuts import render, redirect
-from django.contrib.auth.hashers import check_password
-from django.db.models import Q
-
-from .models import User
-
-
 def login(request):
 
     # Handle GET request
@@ -258,9 +251,6 @@ def login(request):
 # =========================================================
 
 def dashboard(request):
-    if request.method == "GET":
-        return HttpResponse("Hello")
-
     # Get logged-in user's ID from session
     user_id = request.session.get("user_id")
 

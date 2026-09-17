@@ -1,0 +1,254 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --ink: #17324d;
+    --muted: #6d8193;
+    --line: #dce9ef;
+    --surface: #ffffff;
+    --background: #f4fbfd;
+    --blue: #168fbd;
+}
+
+body {
+    min-height: 100vh;
+    color: var(--ink);
+    background:
+        radial-gradient(circle at 90% 0%, rgba(66, 189, 232, 0.16), transparent 34%),
+        linear-gradient(145deg, #edf9fc 0%, var(--background) 48%, #ffffff 100%);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.site-header {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.94);
+    border-bottom: 1px solid rgba(220, 233, 239, 0.85);
+    display: flex;
+    justify-content: space-between;
+    min-height: 76px;
+    padding: 0 clamp(20px, 8vw, 112px);
+}
+
+.brand {
+    align-items: center;
+    color: var(--blue);
+    display: inline-flex;
+    font-size: 22px;
+    font-weight: 700;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.brand-mark {
+    align-items: center;
+    background: #42bde8;
+    border-radius: 11px;
+    color: #ffffff;
+    display: inline-flex;
+    font-size: 22px;
+    height: 40px;
+    justify-content: center;
+    width: 40px;
+}
+
+.header-actions {
+    align-items: center;
+    display: flex;
+    gap: 25px;
+}
+
+.header-actions a {
+    color: #587083;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.header-actions a:hover {
+    color: var(--blue);
+}
+
+.header-actions .logout-link {
+    border: 1px solid #cfe4eb;
+    border-radius: 8px;
+    color: var(--blue);
+    padding: 9px 15px;
+}
+
+.dashboard-shell {
+    margin: 0 auto;
+    max-width: 960px;
+    padding: clamp(48px, 9vw, 88px) 24px 70px;
+}
+
+.welcome-panel {
+    animation: rise-in 500ms ease both;
+    margin-bottom: 40px;
+    max-width: 620px;
+}
+
+.eyebrow {
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    margin-bottom: 13px;
+    text-transform: uppercase;
+}
+
+h1 {
+    color: var(--ink);
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+
+.welcome-copy {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 500px;
+}
+
+.dashboard-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.dashboard-card {
+    align-items: center;
+    animation: rise-in 500ms ease both;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(35, 112, 139, 0.08);
+    display: flex;
+    gap: 16px;
+    min-height: 140px;
+    padding: 24px;
+    text-decoration: none;
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.dashboard-card:nth-child(2) {
+    animation-delay: 80ms;
+}
+
+.dashboard-card:nth-child(3) {
+    animation-delay: 160ms;
+}
+
+.dashboard-card:nth-child(4) {
+    animation-delay: 240ms;
+}
+
+.dashboard-card:hover {
+    border-color: #9fd7e7;
+    box-shadow: 0 16px 34px rgba(35, 112, 139, 0.14);
+    transform: translateY(-3px);
+}
+
+.card-icon {
+    align-items: center;
+    border-radius: 12px;
+    display: inline-flex;
+    flex: 0 0 48px;
+    font-size: 22px;
+    font-weight: 700;
+    height: 48px;
+    justify-content: center;
+}
+
+.card-blue .card-icon {
+    background: #e4f6fc;
+    color: #168fbd;
+}
+
+.card-green .card-icon {
+    background: #e7f8ef;
+    color: #2b9b68;
+}
+
+.card-orange .card-icon {
+    background: #fff3e4;
+    color: #d98226;
+}
+
+.card-violet .card-icon {
+    background: #f0edff;
+    color: #7563bd;
+}
+
+.card-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.card-content strong {
+    color: var(--ink);
+    font-size: 17px;
+}
+
+.card-content small {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.card-arrow {
+    color: #8ca5b3;
+    font-size: 22px;
+}
+
+@keyframes rise-in {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 620px) {
+    .site-header {
+        min-height: 68px;
+        padding: 0 18px;
+    }
+
+    .brand {
+        font-size: 18px;
+    }
+
+    .brand-mark {
+        height: 34px;
+        width: 34px;
+    }
+
+    .header-actions {
+        gap: 12px;
+    }
+
+    .header-actions a {
+        font-size: 13px;
+    }
+
+    .header-actions .logout-link {
+        padding: 8px 10px;
+    }
+
+    .dashboard-shell {
+        padding: 44px 18px 55px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}

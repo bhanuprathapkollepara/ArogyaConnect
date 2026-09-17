@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArogyaConnect | Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/account/dashboard.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="{% url 'dashboard' %}">
+            <span class="brand-mark">+</span>
+            <span>ArogyaConnect</span>
+        </a>
+
+        <nav class="header-actions" aria-label="Account navigation">
+            <a href="#profile">Profile</a>
+            <a class="logout-link" href="{% url 'logout' %}">Logout</a>
+        </nav>
+    </header>
+
+    <main class="dashboard-shell">
+        <section class="welcome-panel" id="profile">
+            <p class="eyebrow">Your health space</p>
+            <h1>Welcome, {{ user.last_name }}</h1>
+            <p class="welcome-copy">Stay on top of your care, appointments, and medical information in one place.</p>
+        </section>
+
+        <section class="dashboard-grid" aria-label="Health services">
+            <a class="dashboard-card card-blue" href="#">
+                <span class="card-icon"><button></button>+</button></span>
+                <span class="card-content">
+                    <strong>Find Doctor</strong>
+                    <small>Connect with the right specialist</small>
+                </span>
+                <span class="card-arrow" aria-hidden="true">&#8594;</span>
+            </a>
+
+            <a class="dashboard-card card-green" href="#">
+                <span class="card-icon">&#128197;</span>
+                <span class="card-content">
+                    <strong>Appointments</strong>
+                    <small>View and manage your visits</small>
+                </span>
+                <span class="card-arrow" aria-hidden="true">&#8594;</span>
+            </a>
+
+            <a class="dashboard-card card-orange" href="#">
+                <span class="card-icon">&#9825;</span>
+                <span class="card-content">
+                    <strong>My Doctors</strong>
+                    <small>Keep your care team close</small>
+                </span>
+                <span class="card-arrow" aria-hidden="true">&#8594;</span>
+            </a>
+
+            <a class="dashboard-card card-violet" href="#">
+                <span class="card-icon">&#43;</span>
+                <span class="card-content">
+                    <strong>Medical Info</strong>
+                    <small>Review your personal health details</small>
+                </span>
+                <span class="card-arrow" aria-hidden="true">&#8594;</span>
+            </a>
+        </section>
+    </main>
+</body>
+</html>
