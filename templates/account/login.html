@@ -1,0 +1,201 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Define character encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Make the page responsive -->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <!-- Login page title -->
+    <title>ArogyaConnect | Login</title>
+
+    <!-- Load Login CSS from Django static folder -->
+    <link
+        rel="stylesheet"
+        href="{% static 'css/account/login.css' %}"
+    >
+
+</head>
+
+<body>
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header>
+
+        <!-- Application logo -->
+        <div class="logo">
+
+            <!-- Medical plus icon -->
+            <div class="logo-icon">
+                +
+            </div>
+
+            <!-- Application name -->
+            <h1>
+                ArogyaConnect
+            </h1>
+
+        </div>
+
+        <!-- Application tagline -->
+        <div class="header-text">
+            Your Health, Our Priority
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         LOGIN CONTAINER
+    ========================================== -->
+
+    <main class="login-container">
+
+        <!-- =========================================
+             LOGIN CARD
+        ========================================== -->
+
+        <div class="login-card">
+
+
+            <!-- =========================================
+                 LOGIN HEADING
+            ========================================== -->
+
+            <div class="login-heading">
+
+                <h2>
+                    Welcome Back
+                </h2>
+
+                <p>
+                    Login to your ArogyaConnect account
+                </p>
+
+            </div>
+
+
+            <!-- =========================================
+                 ERROR MESSAGE
+            ========================================== -->
+
+            {% if error %}
+
+                <div class="error-message">
+                    {{ error }}
+                </div>
+
+            {% endif %}
+
+
+            <!-- =========================================
+                 LOGIN FORM
+            ========================================== -->
+
+            <form method="POST">
+
+                <!-- Django CSRF protection -->
+                {% csrf_token %}
+
+
+                <!-- =========================================
+                     USERNAME / MOBILE / EMAIL
+                ========================================== -->
+
+                <div class="form-group">
+
+                    <label for="login_input">
+                        Username / Mobile / Email
+                    </label>
+
+                    <input
+                        type="text"
+                        id="login_input"
+                        name="login_input"
+                        placeholder="Enter username, mobile or email"
+                        value="{{ login_input|default:'' }}"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- =========================================
+                     PASSWORD
+                ========================================== -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- =========================================
+                     LOGIN BUTTON
+                ========================================== -->
+
+                <button
+                    type="submit"
+                    class="login-button"
+                >
+                    Login
+                </button>
+
+            </form>
+
+
+            <!-- =========================================
+                 SIGNUP LINK
+            ========================================== -->
+
+            <div class="signup-link">
+
+                Don't have an account?
+
+                <a href="{% url 'signup' %}">
+                    Create Account
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer>
+
+        © 2026 ArogyaConnect ·
+        Connecting You to Better Healthcare
+
+    </footer>
+
+</body>
+
+</html>
