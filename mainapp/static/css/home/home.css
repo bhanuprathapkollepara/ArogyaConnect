@@ -1,0 +1,146 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #171717;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #171717;
+}
+
+.container {
+    max-width: 1230px;
+    margin: 40px auto;
+    padding: 30px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 20px;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 22px;
+    color: #666666;
+    margin-bottom: 15px;
+}
+
+.account-options {
+    display: flex;
+    gap: 12px;
+}
+
+.account-card {
+    position: relative;
+    flex: 1;
+    min-height: 115px;
+    border: 1px solid #dddddd;
+    border-radius: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.account-card input {
+    position: absolute;
+    opacity: 0;
+}
+
+.account-card svg {
+    width: 35px;
+    height: 35px;
+}
+
+.account-card h2 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.patient {
+    color: #16a34a;
+}
+
+.doctor {
+    color: #2563eb;
+}
+
+.hospital {
+    color: #9333ea;
+}
+
+.account-card:hover {
+    background: #f8fafc;
+    border-color: #999999;
+    transform: translateY(-2px);
+}
+
+/* Selected card */
+.account-card:has(input:checked) {
+    border: 2px solid #0879b9;
+    background: #eff8ff;
+}
+
+.account-card:focus-within {
+    outline: 2px solid #0879b9;
+    outline-offset: 3px;
+}
+
+.continue-btn {
+    display: block;
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    background: #0879b9;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.continue-btn:hover {
+    background: #056293;
+}
+
+.footer-text {
+    color: #666666;
+    font-size: 15px;
+    margin-top: 18px;
+}
+
+@media (max-width: 650px) {
+    .account-options {
+        flex-direction: column;
+    }
+
+    .account-card {
+        min-height: 110px;
+    }
+
+    .container {
+        margin: 15px;
+        padding: 20px 15px;
+    }
+}

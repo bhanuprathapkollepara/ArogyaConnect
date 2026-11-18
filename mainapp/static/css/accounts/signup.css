@@ -1,0 +1,180 @@
+
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f9ff;
+    color: #1f2937;
+    padding: 30px 15px;
+}
+
+.container {
+    max-width: 750px;
+    margin: 20px auto;
+    padding: 35px;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* Navigation */
+
+.top-nav {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.top-nav a {
+    text-decoration: none;
+    color: #0b6bb5;
+    font-weight: 600;
+}
+
+/* Heading */
+
+h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #0879b9;
+}
+
+.subtitle {
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+/* Form */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.section-title {
+    font-size: 19px;
+    color: #0879b9;
+    font-weight: bold;
+    margin-top: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 15px;
+    background: white;
+    outline: none;
+}
+
+input:focus,
+select:focus {
+    border-color: #0879b9;
+    box-shadow: 0 0 4px rgba(8, 121, 185, 0.2);
+}
+
+/* Consent */
+
+.consent {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    margin-top: 15px;
+}
+
+.consent label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.consent input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* Button */
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: #0b6bb5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+button:hover {
+    background: #07558f;
+}
+
+/* Login */
+
+.helper {
+    text-align: center;
+    margin-top: 22px;
+    color: #64748b;
+}
+
+.helper a {
+    color: #0b6bb5;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Mobile Responsive */
+
+@media (max-width: 600px) {
+    .container {
+        padding: 22px 16px;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .top-nav {
+        justify-content: center;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+}

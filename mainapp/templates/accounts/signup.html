@@ -1,0 +1,244 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ArogyaConnect | Sign Up</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="{% static 'css/accounts/signup.css' %}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Navigation -->
+
+    <nav class="top-nav">
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+        <a href="/accounts/login/?role={{ role }}">Login</a>
+    </nav>
+
+    <!-- Heading -->
+
+    <h1>Create {{ role|title }} Account</h1>
+
+    <p class="subtitle">
+        Complete your registration details below.
+    </p>
+
+    <!-- Signup Form -->
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <input type="hidden" name="role" value="{{ role }}">
+
+        <!-- Personal Information -->
+
+        <h3 class="section-title">
+            Personal Information
+        </h3>
+
+        <div class="form-row">
+
+            <div class="form-group">
+                <label>First Name *</label>
+                <input type="text"
+                       name="first_name"
+                       placeholder="First Name"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label>Middle Name</label>
+                <input type="text"
+                       name="middle_name"
+                       placeholder="Middle Name">
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label>Last Name *</label>
+            <input type="text"
+                   name="last_name"
+                   placeholder="Last Name"
+                   required>
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group">
+                <label>Date of Birth *</label>
+                <input type="date"
+                       name="date_of_birth"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label>Gender</label>
+                <select name="gender">
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                    <option value="prefer_not_to_say">
+                        Prefer not to say
+                    </option>
+                </select>
+            </div>
+
+        </div>
+
+        <!-- Contact Information -->
+
+        <h3 class="section-title">
+            Contact Information
+        </h3>
+
+        <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email"
+                   name="email"
+                   placeholder="Enter Email Address"
+                   required>
+        </div>
+
+        <div class="form-group">
+            <label>Mobile Number *</label>
+            <input type="tel"
+                   name="mobile_number"
+                   placeholder="Enter Mobile Number"
+                   required>
+        </div>
+
+        <div class="form-group">
+            <label>Country *</label>
+            <select name="country" required>
+                <option value="">Select Country</option>
+                <option value="India">India</option>
+                <option value="USA">United States</option>
+                <option value="UK">United Kingdom</option>
+                <option value="Canada">Canada</option>
+                <option value="Australia">Australia</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group">
+                <label>State</label>
+                <input type="text"
+                       name="state"
+                       placeholder="Enter State">
+            </div>
+
+            <div class="form-group">
+                <label>City</label>
+                <input type="text"
+                       name="city"
+                       placeholder="Enter City">
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label>PIN Code</label>
+            <input type="text"
+                   name="pincode"
+                   placeholder="Enter PIN Code">
+        </div>
+
+        <!-- Account Information -->
+
+        <h3 class="section-title">
+            Account Information
+        </h3>
+
+        <div class="form-group">
+            <label>Username *</label>
+            <input type="text"
+                   name="username"
+                   placeholder="Create Username"
+                   required>
+        </div>
+
+        <div class="form-group">
+            <label>Password *</label>
+            <input type="password"
+                   name="password"
+                   placeholder="Create Password"
+                   required>
+        </div>
+
+        <div class="form-group">
+            <label>Confirm Password *</label>
+            <input type="password"
+                   name="confirm_password"
+                   placeholder="Confirm Password"
+                   required>
+        </div>
+
+        <!-- Consent -->
+
+        <h3 class="section-title">
+            Consent
+        </h3>
+
+        <div class="consent">
+
+            <label>
+                <input type="checkbox"
+                       name="terms"
+                       required>
+                I agree to the Terms and Conditions *
+            </label>
+
+            <label>
+                <input type="checkbox"
+                       name="privacy"
+                       required>
+                I agree to the Privacy Policy *
+            </label>
+
+            <label>
+                <input type="checkbox"
+                       name="notifications">
+                I consent to receive appointment notifications
+                (Optional)
+            </label>
+
+        </div>
+
+        <!-- Submit -->
+
+        <button type="submit">
+            Create Account
+        </button>
+
+    </form>
+
+    <!-- Login Link -->
+
+    <p class="helper">
+        Already a member?
+        <a href="/accounts/login/?role={{ role }}">
+            Login here
+        </a>
+    </p>
+
+</div>
+
+</body>
+</html>
